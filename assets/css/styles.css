@@ -192,10 +192,6 @@ ul, li {
 	  margin-left: 8%;
 }
 
-/*-----------------------------*\
-	ABOUT ME
-\*-----------------------------*/
-
 .circle {
 	  border-radius: 50%;
 	  width: 85px;
@@ -291,19 +287,6 @@ ul, li {
 	  padding-bottom: 15px;
 	  padding-right: 10px;
 }
-
-
-/*-----------------------------*\
-	FOOTER
-\*-----------------------------*/
-
-#contact {
-	  margin: 0 18px;
-}
-
-/*-----------------------------*\
-	RESPONSIVE
-\*-----------------------------*/
 
 @media only screen and (max-width: 950px) {
 	  .container {
