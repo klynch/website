@@ -1,0 +1,4 @@
+---
+repo_src: https://github.com/klynch/website
+repo_path: /srv/klyn.ch
+site_path: "{{ repo_path }}/website"

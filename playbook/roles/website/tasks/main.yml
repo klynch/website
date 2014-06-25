@@ -1,0 +1,40 @@
+---
+# Firewall
+# ====================================================
+
+- name: Setup ufw
+  action: shell ufw allow 80
+
+- name: Setup ufw
+  action: shell ufw allow 443
+
+# nginx
+# ====================================================
+
+- name: add nginx latest version ppa
+  action: apt_repository repo=ppa:nginx/stable
+
+- name: update apt
+  command: sudo apt-get update
+
+- name: install nginx
+  action: apt name=nginx
+
+- name: delete default vhost
+  action: file path=/etc/nginx/sites-enabled/default state=absent
+  notify:
+    - restart nginx
+
+# Website
+# ====================================================
+
+- name: Copy nginx site
+  template: src=nginx.website.j2 dest=/etc/nginx/sites-available/website
+
+- name: Enabled nginx site
+  action: file src=/etc/nginx/sites-available/website dest=/etc/nginx/sites-enabled/website state=link
+  notify:
+    - restart nginx
+
+- git: repo={{ repo_src }}
+       dest={{ repo_path }}
